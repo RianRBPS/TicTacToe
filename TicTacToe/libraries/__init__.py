@@ -21,19 +21,15 @@ def player_input():
 
     # KEEP ASKING PLAYER 1 to choose X or O
 
-    while marker != 'X' and marker != 'O':
-        marker = input('Player 1, choose X or O: ')
+    while not (marker == 'X' or marker == 'O'):
+        marker = input('Player 1, choose X or O: ').upper()
 
     # ASSIGN PLAYER 2, the opposite marker
-    marker == player1
 
-    if player1 == 'X':
-        player2 = 'O'
+    if marker == 'X':
+        return ('X', 'O')
     else:
-        player2 = 'X'
-    print(player1)
-    return (player1, player2)
-
+        return ('O', 'X')
 
 def place_marker(board, marker, position):
     board[position] = marker
