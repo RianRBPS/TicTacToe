@@ -43,11 +43,9 @@ def win_check(board, mark):
             (board[9] == mark and board[5] == mark and board[1] == mark))  # diagonal
 
 
-import random
-
-
 def choose_first():
-    if random.randint(0, 1) == 0:
+    from random import randint
+    if randint(0, 1) == 0:
         return 'Player 2'
     else:
         return 'Player 1'
