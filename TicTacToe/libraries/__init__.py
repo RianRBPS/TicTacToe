@@ -72,4 +72,11 @@ def player_choice(board):
 
 
 def replay():
-    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
+    while True:
+        play_again = input('Do you want to play again? Enter Yes or No: ').lower().strip()
+        if play_again.startswith('y'):
+            return True
+        elif play_again.startswith('n'):
+            break
+        else:
+            print('Please, give me a valid answer! ')
