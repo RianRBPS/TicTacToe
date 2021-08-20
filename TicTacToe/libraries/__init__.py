@@ -1,22 +1,13 @@
-#from IPython.display import clear_output
-
-
 def display_board(board):
-    #clear_output()
-    print(board[1] + '║' + board[2] + '║' + board[3])
+    # clear_output()  # Remember, this only works in jupyter!
+    print(board[7] + '║' + board[8] + '║' + board[9])
     print('═╬═╬═')
     print(board[4] + '║' + board[5] + '║' + board[6])
     print('═╬═╬═')
-    print(board[7] + '║' + board[8] + '║' + board[9])
-
-test_board = [' '] * 10
-display_board(test_board)
+    print(board[1] + '║' + board[2] + '║' + board[3])
 
 
 def player_input():
-    '''
-    OUTPUT = (Player 1 marker, Player 2 marker)
-    '''
     marker = ''
 
     # KEEP ASKING PLAYER 1 to choose X or O
@@ -30,6 +21,7 @@ def player_input():
         return ('X', 'O')
     else:
         return ('O', 'X')
+
 
 def place_marker(board, marker, position):
     board[position] = marker
@@ -51,19 +43,17 @@ def win_check(board, mark):
             (board[9] == mark and board[5] == mark and board[1] == mark))  # diagonal
 
 
+import random
+
 
 def choose_first():
-    from random import randint
-    flip = randint(0, 1)
-
-    if flip == 0:
-        return 'Player 1'
-    else:
+    if random.randint(0, 1) == 0:
         return 'Player 2'
+    else:
+        return 'Player 1'
 
 
 def space_check(board, position):
-
     return board[position] == ' '
 
 
@@ -71,6 +61,7 @@ def full_board_check(board):
     for i in range(1, 10):
         if space_check(board, i):
             return False
+    return True
 
 
 def player_choice(board):
@@ -79,10 +70,8 @@ def player_choice(board):
     while position not in range(1, 10) or not space_check(board, position):
         position = int(input('Choose a position: (1-9)'))
 
+    return position
+
 
 def replay():
-    choice = input('Play again? Enter Yes or No')
-
-    return choice == 'Yes'
-
-player_input()
+    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
