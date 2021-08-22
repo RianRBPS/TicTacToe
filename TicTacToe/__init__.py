@@ -9,7 +9,7 @@ while True:
     turn = choose_first()
     print(turn + ' will go first.')
 
-    play_game = input('Are you ready to play? Enter Yes or No.')
+    play_game = input('Are you ready to play? Enter Yes or No: ')
 
     if play_game.lower()[0] == 'y':
         game_on = True
